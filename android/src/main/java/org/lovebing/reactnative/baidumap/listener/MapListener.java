@@ -113,6 +113,13 @@ public class MapListener implements BaiduMap.OnMapStatusChangeListener,
         OverlayMarker overlayMarker = MapViewManager.findOverlayMaker(marker);
         mapView.getMap().hideInfoWindow();
         if (overlayMarker != null) {
+            WritableMap writableMap2 = Arguments.createMap();
+            WritableMap position2 = Arguments.createMap();
+            position2.putDouble("latitude", marker.getPosition().latitude);
+            position2.putDouble("longitude", marker.getPosition().longitude);
+            writableMap2.putMap("position", position2);
+            writableMap2.putString("title", marker.getTitle());
+
             InfoWindow infoWindow = overlayMarker.getInfoWindow(marker.getPosition());
             if (infoWindow != null) {
                 mapView.getMap().showInfoWindow(infoWindow);
@@ -120,7 +127,7 @@ public class MapListener implements BaiduMap.OnMapStatusChangeListener,
             reactContext
                     .getJSModule(RCTEventEmitter.class)
                     .receiveEvent(overlayMarker.getId(),
-                            "topClick", writableMap.copy());
+                            "topClick", writableMap2);
         }
         sendEvent(mapView, "onMarkerClick", writableMap);
         return true;
