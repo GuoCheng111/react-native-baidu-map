@@ -89,6 +89,11 @@ public class OverlayMarkerManager extends ViewGroupManager<OverlayMarker> {
         overlayMarker.setFlat(flat);
     }
 
+    @ReactProp(name = "showInfoWindow")
+    public void setShowInfoWindow(OverlayMarker overlayMarker, boolean showInfoWindow) {
+        overlayMarker.setShowInfoWindow(showInfoWindow);
+    }
+
     @Override
     public void addView(OverlayMarker parent, View child, int index) {
         if (child instanceof OverlayInfoWindow) {

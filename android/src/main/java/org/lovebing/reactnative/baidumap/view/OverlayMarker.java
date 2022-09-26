@@ -58,6 +58,7 @@ public class OverlayMarker extends ViewGroup implements OverlayView, ClusterItem
     private LatLng position;
     private Float rotate;
     private Boolean flat;
+    private boolean showInfoWindow;
     private Boolean perspective;
     private BitmapDescriptor iconBitmapDescriptor;
     private Marker marker;
@@ -232,6 +233,17 @@ public class OverlayMarker extends ViewGroup implements OverlayView, ClusterItem
         }
     }
 
+    public void setShowInfoWindow(boolean showInfoWindow){
+        this.showInfoWindow = showInfoWindow;
+        if (marker != null) {
+            if (showInfoWindow){
+                marker.showInfoWindow(getInfoWindow(position));
+            }else {
+                marker.hideInfoWindow();
+            }
+        }
+    }
+
     public void setPerspective(Boolean perspective) {
         this.perspective = perspective;
         if (marker != null) {
@@ -349,6 +361,9 @@ public class OverlayMarker extends ViewGroup implements OverlayView, ClusterItem
         }
         if (perspective != null) {
             option.perspective(perspective);
+        }
+        if (showInfoWindow){
+            option.infoWindow(getInfoWindow(position));
         }
         marker = (Marker) baiduMap.addOverlay(option);
     }
