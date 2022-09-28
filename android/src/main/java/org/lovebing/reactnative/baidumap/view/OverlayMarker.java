@@ -10,6 +10,7 @@ package org.lovebing.reactnative.baidumap.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.util.AttributeSet;
@@ -147,6 +148,7 @@ public class OverlayMarker extends ViewGroup implements OverlayView, ClusterItem
                 Button button = new Button(getContext());
                 button.setVisibility(GONE);
                 button.setText(title);
+                //button.setBackgroundColor(Color.rgb(84,87,230));
                 titleInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(button), position, titleOffsetY, new InfoWindow.OnInfoWindowClickListener() {
                     @Override
                     public void onInfoWindowClick() {

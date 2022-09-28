@@ -47,6 +47,9 @@ export default {
   convertGPSCoor(lat, lng) {
     return _module.convertGPSCoor(lat, lng);
   },
+  convertGCJ02Coor(lat, lng) {
+    return _module.convertGCJ02Coor(lat, lng);
+  },
   reverseGeoCode(lat, lng) {
     return new Promise((resolve, reject) => {
       try {

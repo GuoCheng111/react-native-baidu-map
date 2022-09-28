@@ -109,6 +109,19 @@ public class GeolocationModule extends BaseModule
     }
 
     @ReactMethod
+    public void convertGCJ02Coor(double lat, double lng, Promise promise) {
+        Log.i("convertGCJ02Coor", "convertGCJ02Coor");
+        CoordinateConverter converter = new CoordinateConverter();
+        converter.from(CoordinateConverter.CoordType.COMMON);
+        converter.coord(new LatLng(lat, lng));
+        LatLng latLng = converter.convert();
+        WritableMap map = Arguments.createMap();
+        map.putDouble("latitude", latLng.latitude);
+        map.putDouble("longitude", latLng.longitude);
+        promise.resolve(map);
+    }
+
+    @ReactMethod
     public void getCurrentPosition(String coorType) {
         if (locating) {
             return;

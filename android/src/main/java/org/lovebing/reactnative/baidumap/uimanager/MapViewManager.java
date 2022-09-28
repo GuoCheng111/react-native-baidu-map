@@ -150,6 +150,11 @@ public class MapViewManager extends ViewGroupManager<TextureMapView> {
         setting.setScrollGesturesEnabled(scrollGesturesEnabled);
     }
 
+    @ReactProp(name="zoomControlsEnabled")
+    public void setControlsEnabled(TextureMapView mapView, boolean zoomControlsEnabled) {
+        mapView.showZoomControls(zoomControlsEnabled);
+    }
+
     @ReactProp(name="center")
     public void setCenter(TextureMapView mapView, ReadableMap position) {
         LocationData locationData = ConvertUtils.convert(position, LocationData.class);
