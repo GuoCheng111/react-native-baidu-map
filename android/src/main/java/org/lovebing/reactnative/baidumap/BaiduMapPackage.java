@@ -70,6 +70,7 @@ public class BaiduMapPackage implements ReactPackage {
         if (Looper.myLooper() == null){
             Looper.prepare();
         }
+        SDKInitializer.setAgreePrivacy(reactContext.getApplicationContext(), true);
         SDKInitializer.initialize(reactContext.getApplicationContext());
     }
 }

@@ -46,7 +46,7 @@ android {
 
 dependencies {
     compileOnly 'com.facebook.react:react-native:+'
-    implementation files('libs/BaiduLBS_Android.jar')
+    api files('libs/BaiduMap.jar')
     compileOnly files('src/main/assets')
 }
 

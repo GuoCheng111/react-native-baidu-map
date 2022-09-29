@@ -55,7 +55,7 @@ public class GeolocationModule extends BaseModule
         return "BaiduGeolocationModule";
     }
 
-    private void initLocationClient(String coorType) {
+    private void initLocationClient(String coorType) throws Exception {
         if(context.getCurrentActivity() != null) {
             AppUtils.checkPermission(context.getCurrentActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
         }
@@ -122,7 +122,7 @@ public class GeolocationModule extends BaseModule
     }
 
     @ReactMethod
-    public void getCurrentPosition(String coorType) {
+    public void getCurrentPosition(String coorType) throws Exception {
         if (locating) {
             return;
         }
@@ -136,7 +136,7 @@ public class GeolocationModule extends BaseModule
     }
 
     @ReactMethod
-    public void startLocating(String coorType) {
+    public void startLocating(String coorType) throws Exception {
         if (locating) {
             return;
         }
